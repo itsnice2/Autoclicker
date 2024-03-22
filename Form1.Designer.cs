@@ -200,7 +200,9 @@
             MinimizeBox = false;
             MinimumSize = new Size(213, 294);
             Name = "Form1";
+            StartPosition = FormStartPosition.CenterScreen;
             Text = "Autoclicker v0.1";
+            TopMost = true;
             Load += Form1_Load;
             KeyDown += Form1_KeyDown;
             MouseMove += Form1_MouseMove;

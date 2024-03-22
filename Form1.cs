@@ -53,7 +53,15 @@ namespace Autoclicker
                 Point myPoint = new Point();
                 myPoint.X = Int32.Parse(txtXAchse.Text);
                 myPoint.Y = Int32.Parse(txtYAchse.Text);
-                zaehler = Int32.Parse(txtKPS.Text);
+                
+                if(txtKPS.Text == "")
+                {
+                    zaehler = 0;
+                }
+                else
+                {
+                    zaehler = Int32.Parse(txtKPS.Text);
+                }
 
                 if (chkbox_once.Checked == true) 
                 {
@@ -69,6 +77,7 @@ namespace Autoclicker
                 else
                 {
                     //KeyEventHandler meinEvent = new KeyEventHandler();
+                    
                     do 
                     {
                         Cursor.Position = myPoint;
@@ -76,12 +85,15 @@ namespace Autoclicker
                         mouse_event(MouseEventLeftUp, uint.Parse(txtXAchse.Text), uint.Parse(txtYAchse.Text), 0, new System.IntPtr());
                         Thread.Sleep(100);
 
-                        if (abbruch == true)
+                        zaehler += 1;
+
+                        if (abbruch == true || zaehler == 100)
                         {
                             break;
                         }
                     }
-                    while (true);
+                    while (abbruch == false);
+                    
                 }
                 
                 
@@ -137,6 +149,13 @@ namespace Autoclicker
                 }
             }
 
+            StopThisNow.OwnerForm = this;
+            StopThisNow.HotKeyPressed += new HotKey.HotKeyPressedEventHandler(HK_HotKeyPressed);
+            StopThisNow.AddHotKey(Keys.X, HotKey.MODKEY.MOD_WIN, "TEST");
+
+        
+
+            
 
             // Klicken abbrechen
             if (e.Modifiers == Keys.Control && e.KeyCode == Keys.X)
@@ -152,7 +171,11 @@ namespace Autoclicker
             }
             
         }
-
+        public void HK_HotKeyPressed(string ID)
+        {
+            //MessageBox.Show(ID);
+            abbruch = true;
+        }
         private void timer1_Tick(object sender, EventArgs e)
         {
             myPoint = System.Windows.Forms.Control.MousePosition;
@@ -167,11 +190,15 @@ namespace Autoclicker
 
         private void Form1_Load(object sender, EventArgs e)
         {
+            chkbox_once.Checked = true;
+            chkbox_once.Enabled = false;
+            txtKPS.Text = "100";
+            
             toolTip_onlyonce.SetToolTip(this.chkbox_once, "Diese Klicks nur einmal auführen, oder wiederholen?");
             toolTip_onlyonce.SetToolTip(this.label_help,
                 "STRG + S = Mauskoordinaten speichern\n" +
                 "(ALT +) S\t = Klicks ausführen\n" +
-                "SRTG + X\t = Klicks abbrechen\n" +
+                "STRG + SHIFT + X = Klicks abbrechen\n" +
                 "STRG + 1 = Checkbox \"nur 1x\" setzen\n" +
                 "(ALT +) B = Programm beenden\n");
         }
