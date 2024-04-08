@@ -46,108 +46,82 @@
             timer2 = new System.Windows.Forms.Timer(components);
             toolTip_onlyonce = new ToolTip(components);
             label_help = new Label();
+            btnExpand = new Button();
             boxKlickTest.SuspendLayout();
             SuspendLayout();
             // 
             // btnExit
             // 
-            btnExit.Location = new Point(105, 213);
+            resources.ApplyResources(btnExit, "btnExit");
             btnExit.Name = "btnExit";
-            btnExit.Size = new Size(75, 23);
-            btnExit.TabIndex = 7;
-            btnExit.Text = "&Beenden";
+            toolTip_onlyonce.SetToolTip(btnExit, resources.GetString("btnExit.ToolTip"));
             btnExit.UseVisualStyleBackColor = true;
             btnExit.Click += btnExit_Click;
             // 
             // txtKPS
             // 
-            txtKPS.Location = new Point(9, 27);
+            resources.ApplyResources(txtKPS, "txtKPS");
             txtKPS.Name = "txtKPS";
-            txtKPS.Size = new Size(110, 23);
-            txtKPS.TabIndex = 1;
-            txtKPS.TextAlign = HorizontalAlignment.Center;
+            toolTip_onlyonce.SetToolTip(txtKPS, resources.GetString("txtKPS.ToolTip"));
             // 
             // txtXAchse
             // 
-            txtXAchse.Location = new Point(9, 76);
+            resources.ApplyResources(txtXAchse, "txtXAchse");
             txtXAchse.Name = "txtXAchse";
-            txtXAchse.Size = new Size(77, 23);
-            txtXAchse.TabIndex = 3;
-            txtXAchse.TextAlign = HorizontalAlignment.Center;
+            toolTip_onlyonce.SetToolTip(txtXAchse, resources.GetString("txtXAchse.ToolTip"));
             // 
             // txtYAchse
             // 
-            txtYAchse.Location = new Point(103, 76);
+            resources.ApplyResources(txtYAchse, "txtYAchse");
             txtYAchse.Name = "txtYAchse";
-            txtYAchse.Size = new Size(77, 23);
-            txtYAchse.TabIndex = 4;
-            txtYAchse.TextAlign = HorizontalAlignment.Center;
+            toolTip_onlyonce.SetToolTip(txtYAchse, resources.GetString("txtYAchse.ToolTip"));
             // 
             // label1
             // 
-            label1.AutoSize = true;
-            label1.Location = new Point(12, 9);
+            resources.ApplyResources(label1, "label1");
             label1.Name = "label1";
-            label1.Size = new Size(92, 15);
-            label1.TabIndex = 5;
-            label1.Text = "Anzahl an Klicks";
-            label1.Click += label1_Click;
+            toolTip_onlyonce.SetToolTip(label1, resources.GetString("label1.ToolTip"));
             // 
             // label2
             // 
-            label2.AutoSize = true;
-            label2.Location = new Point(12, 58);
+            resources.ApplyResources(label2, "label2");
             label2.Name = "label2";
-            label2.Size = new Size(124, 15);
-            label2.TabIndex = 6;
-            label2.Text = "Koordinaten (STRG+S)";
+            toolTip_onlyonce.SetToolTip(label2, resources.GetString("label2.ToolTip"));
             // 
             // btnStart
             // 
-            btnStart.Location = new Point(9, 213);
+            resources.ApplyResources(btnStart, "btnStart");
             btnStart.Name = "btnStart";
-            btnStart.Size = new Size(75, 23);
-            btnStart.TabIndex = 6;
-            btnStart.Text = "&Start";
+            toolTip_onlyonce.SetToolTip(btnStart, resources.GetString("btnStart.ToolTip"));
             btnStart.UseVisualStyleBackColor = true;
             btnStart.Click += btnStart_Click;
             // 
             // txtKoordinaten
             // 
-            txtKoordinaten.Enabled = false;
-            txtKoordinaten.Location = new Point(9, 105);
+            resources.ApplyResources(txtKoordinaten, "txtKoordinaten");
             txtKoordinaten.Name = "txtKoordinaten";
-            txtKoordinaten.Size = new Size(171, 23);
-            txtKoordinaten.TabIndex = 5;
-            txtKoordinaten.TextAlign = HorizontalAlignment.Center;
+            toolTip_onlyonce.SetToolTip(txtKoordinaten, resources.GetString("txtKoordinaten.ToolTip"));
             // 
             // label3
             // 
-            label3.AutoSize = true;
-            label3.Location = new Point(12, 137);
+            resources.ApplyResources(label3, "label3");
             label3.Name = "label3";
-            label3.Size = new Size(51, 15);
-            label3.TabIndex = 12;
-            label3.Text = "Klicktest";
+            toolTip_onlyonce.SetToolTip(label3, resources.GetString("label3.ToolTip"));
             // 
             // boxKlickTest
             // 
+            resources.ApplyResources(boxKlickTest, "boxKlickTest");
             boxKlickTest.Controls.Add(label4);
-            boxKlickTest.Location = new Point(9, 155);
             boxKlickTest.Name = "boxKlickTest";
-            boxKlickTest.Size = new Size(171, 52);
-            boxKlickTest.TabIndex = 13;
             boxKlickTest.TabStop = false;
+            toolTip_onlyonce.SetToolTip(boxKlickTest, resources.GetString("boxKlickTest.ToolTip"));
             boxKlickTest.Click += BoxKlickTest_Click;
             // 
             // label4
             // 
-            label4.AutoSize = true;
-            label4.Location = new Point(24, 19);
+            resources.ApplyResources(label4, "label4");
             label4.Name = "label4";
-            label4.Size = new Size(116, 15);
-            label4.TabIndex = 0;
-            label4.Text = "Klicken um zu testen";
+            toolTip_onlyonce.SetToolTip(label4, resources.GetString("label4.ToolTip"));
             label4.Click += label4_Click;
             // 
             // timer1
@@ -156,11 +130,10 @@
             // 
             // chkbox_once
             // 
-            chkbox_once.Location = new Point(125, 26);
+            resources.ApplyResources(chkbox_once, "chkbox_once");
             chkbox_once.Name = "chkbox_once";
-            chkbox_once.Size = new Size(69, 24);
-            chkbox_once.TabIndex = 2;
-            chkbox_once.Text = "nur &1x";
+            toolTip_onlyonce.SetToolTip(chkbox_once, resources.GetString("chkbox_once.ToolTip"));
+            chkbox_once.CheckedChanged += chkbox_once_CheckedChanged;
             // 
             // timer2
             // 
@@ -168,19 +141,24 @@
             // 
             // label_help
             // 
-            label_help.AutoSize = true;
+            resources.ApplyResources(label_help, "label_help");
             label_help.BackColor = SystemColors.ControlLight;
-            label_help.Location = new Point(173, 8);
             label_help.Name = "label_help";
-            label_help.Size = new Size(12, 15);
-            label_help.TabIndex = 15;
-            label_help.Text = "?";
+            toolTip_onlyonce.SetToolTip(label_help, resources.GetString("label_help.ToolTip"));
+            // 
+            // btnExpand
+            // 
+            resources.ApplyResources(btnExpand, "btnExpand");
+            btnExpand.Name = "btnExpand";
+            toolTip_onlyonce.SetToolTip(btnExpand, resources.GetString("btnExpand.ToolTip"));
+            btnExpand.UseVisualStyleBackColor = true;
+            btnExpand.Click += btnExpand_Click;
             // 
             // Form1
             // 
-            AutoScaleDimensions = new SizeF(7F, 15F);
+            resources.ApplyResources(this, "$this");
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(197, 255);
+            Controls.Add(btnExpand);
             Controls.Add(label_help);
             Controls.Add(chkbox_once);
             Controls.Add(boxKlickTest);
@@ -193,15 +171,11 @@
             Controls.Add(txtKPS);
             Controls.Add(btnStart);
             Controls.Add(btnExit);
-            Icon = (Icon)resources.GetObject("$this.Icon");
             KeyPreview = true;
             MaximizeBox = false;
-            MaximumSize = new Size(213, 294);
             MinimizeBox = false;
-            MinimumSize = new Size(213, 294);
             Name = "Form1";
-            StartPosition = FormStartPosition.CenterScreen;
-            Text = "Autoclicker v0.1";
+            toolTip_onlyonce.SetToolTip(this, resources.GetString("$this.ToolTip"));
             TopMost = true;
             Load += Form1_Load;
             KeyDown += Form1_KeyDown;
@@ -235,5 +209,6 @@
         private System.Windows.Forms.Timer timer2;
         private ToolTip toolTip_onlyonce;
         private Label label_help;
+        private Button btnExpand;
     }
 }

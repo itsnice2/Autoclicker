@@ -15,3 +15,6 @@ C:\Users\IT-User\git-ea\Autoclicker\obj\Debug\net8.0-windows\Autoclicker.pdb
 C:\Users\IT-User\git-ea\Autoclicker\obj\Debug\net8.0-windows\Autoclicker.genruntimeconfig.cache
 C:\Users\IT-User\git-ea\Autoclicker\obj\Debug\net8.0-windows\ref\Autoclicker.dll
 C:\Users\IT-User\git-ea\Autoclicker\obj\Debug\net8.0-windows\Autoclicker.sourcelink.json
+C:\Users\IT-User\git-ea\Autoclicker\bin\Debug\net8.0-windows\de-DE\Autoclicker.resources.dll
+C:\Users\IT-User\git-ea\Autoclicker\obj\Debug\net8.0-windows\Autoclicker.Form1.de-DE.resources
+C:\Users\IT-User\git-ea\Autoclicker\obj\Debug\net8.0-windows\de-DE\Autoclicker.resources.dll

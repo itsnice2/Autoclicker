@@ -13,11 +13,11 @@ namespace Autoclicker
         public KeyInfo taste = new KeyInfo();
 
         private HotKey StopThisNow = new HotKey();
-       
+
         // Nächste 4 Zeilen für Mausklicks:
         private const UInt32 MouseEventLeftDown = 0x0002;
         private const UInt32 MouseEventLeftUp = 0x0004;
-        
+
         [DllImport("user32", EntryPoint = "mouse_event")]
         private static extern void mouse_event(UInt32 dwFlags, UInt32 dx, UInt32 dy, UInt32 dwData, IntPtr dwExtraInfo);
 
@@ -31,13 +31,11 @@ namespace Autoclicker
             this.Close();
         }
 
-        private void label1_Click(object sender, EventArgs e)
-        {
-
-        }
 
         private void btnStart_Click(object sender, EventArgs e)
         {
+
+            // Steht überhaupt etwas in den Koordinatenboxen?
             if (txtXAchse.Text == "" || txtXAchse.Text == "")
             {
                 string myOldText = label3.Text;
@@ -45,7 +43,9 @@ namespace Autoclicker
                 label3.ForeColor = Color.Red;
                 timer2.Interval = 3000;
                 timer2.Start();
+                //label3.Text = "Klicktest";
             }
+            // Wenn ja, dann hier weitermachen
             else
             {
 
@@ -53,17 +53,18 @@ namespace Autoclicker
                 Point myPoint = new Point();
                 myPoint.X = Int32.Parse(txtXAchse.Text);
                 myPoint.Y = Int32.Parse(txtYAchse.Text);
-                
-                if(txtKPS.Text == "")
+
+                if (txtKPS.Text == "")
                 {
-                    zaehler = 0;
+                    zaehler = 1;
                 }
                 else
                 {
                     zaehler = Int32.Parse(txtKPS.Text);
                 }
 
-                if (chkbox_once.Checked == true) 
+                // Nur einmal ausführen?
+                if (chkbox_once.Checked == true)
                 {
                     Cursor.Position = myPoint;
 
@@ -71,19 +72,26 @@ namespace Autoclicker
                     {
                         mouse_event(MouseEventLeftDown, uint.Parse(txtXAchse.Text), uint.Parse(txtYAchse.Text), 0, new System.IntPtr());
                         mouse_event(MouseEventLeftUp, uint.Parse(txtXAchse.Text), uint.Parse(txtYAchse.Text), 0, new System.IntPtr());
-                        Thread.Sleep(100);
+                        //Thread.Sleep(100);
                     }
+                    //txtKPS.Text = zaehler.ToString();
+                    //txtKPS.Text = "Fertig";
                 }
+                // unendlich ausführen 
                 else
                 {
                     //KeyEventHandler meinEvent = new KeyEventHandler();
-                    
-                    do 
+
+                    Cursor.Position = myPoint;
+
+                    do
                     {
-                        Cursor.Position = myPoint;
+
                         mouse_event(MouseEventLeftDown, uint.Parse(txtXAchse.Text), uint.Parse(txtYAchse.Text), 0, new System.IntPtr());
                         mouse_event(MouseEventLeftUp, uint.Parse(txtXAchse.Text), uint.Parse(txtYAchse.Text), 0, new System.IntPtr());
                         Thread.Sleep(100);
+                        //btnStart.Focus();
+                        txtKPS.Focus();
 
                         zaehler += 1;
 
@@ -93,10 +101,10 @@ namespace Autoclicker
                         }
                     }
                     while (abbruch == false);
-                    
+
                 }
-                
-                
+
+
 
 
             }
@@ -153,23 +161,26 @@ namespace Autoclicker
             StopThisNow.HotKeyPressed += new HotKey.HotKeyPressedEventHandler(HK_HotKeyPressed);
             StopThisNow.AddHotKey(Keys.X, HotKey.MODKEY.MOD_WIN, "TEST");
 
-        
 
-            
+
+
 
             // Klicken abbrechen
             if (e.Modifiers == Keys.Control && e.KeyCode == Keys.X)
             {
-                if(abbruch == false)
-                { 
+                if (abbruch == false)
+                {
                     label3.Text = "Warum?";
+                    Thread.Sleep(1000);
+                    label3.Text = "Klicktest";
+                    klicktest = 0;
                 }
                 else
                 {
                     abbruch = true;
                 }
             }
-            
+
         }
         public void HK_HotKeyPressed(string ID)
         {
@@ -185,6 +196,7 @@ namespace Autoclicker
         private void timer2_Tick(object sender, EventArgs e)
         {
             label3.ForeColor = Color.Black;
+            label3.Text = "Klicktest";
             timer2.Stop();
         }
 
@@ -193,7 +205,7 @@ namespace Autoclicker
             chkbox_once.Checked = true;
             chkbox_once.Enabled = false;
             txtKPS.Text = "100";
-            
+
             toolTip_onlyonce.SetToolTip(this.chkbox_once, "Diese Klicks nur einmal auführen, oder wiederholen?");
             toolTip_onlyonce.SetToolTip(this.label_help,
                 "STRG + S = Mauskoordinaten speichern\n" +
@@ -201,6 +213,34 @@ namespace Autoclicker
                 "STRG + SHIFT + X = Klicks abbrechen\n" +
                 "STRG + 1 = Checkbox \"nur 1x\" setzen\n" +
                 "(ALT +) B = Programm beenden\n");
+        }
+
+        private void chkbox_once_CheckedChanged(object sender, EventArgs e)
+        {
+            if (chkbox_once.Checked == true)
+            {
+                txtKPS.Enabled = true;
+            }
+            else
+            {
+                txtKPS.Enabled = false;
+            }
+        }
+
+        private void btnExpand_Click(object sender, EventArgs e)
+        {
+            if (btnExpand.Text == "-")
+            {
+                this.Size = new Size(213, 205);
+                //this.Size = new Size(300, 300);
+                btnExpand.Text = "+";
+            }
+            else
+            {
+                this.Size = new Size(213, 294);
+                //this.Size = new Size(300, 500);
+                btnExpand.Text = "-";
+            }
         }
 
         //klicktest += 1;
