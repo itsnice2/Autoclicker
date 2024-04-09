@@ -67,7 +67,7 @@ namespace Autoclicker
                 if (chkbox_once.Checked == true)
                 {
                     Cursor.Position = myPoint;
-
+                    
                     for (int i = 0; i < zaehler; i++)
                     {
                         mouse_event(MouseEventLeftDown, uint.Parse(txtXAchse.Text), uint.Parse(txtYAchse.Text), 0, new System.IntPtr());
@@ -76,6 +76,9 @@ namespace Autoclicker
                     }
                     //txtKPS.Text = zaehler.ToString();
                     //txtKPS.Text = "Fertig";
+                    this.BringToFront();
+                    this.Activate();
+                    txtKPS.Focus();
                 }
                 // unendlich ausführen 
                 else

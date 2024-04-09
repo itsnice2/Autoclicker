@@ -3,11 +3,11 @@
   "WorkspaceRootPath": "C:\\Users\\IT-User\\git-ea\\Autoclicker\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{EED494C8-94E4-47AD-8192-482F94E9231F}|Autoclicker.csproj|C:\\Users\\IT-User\\git-ea\\Autoclicker\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "AbsoluteMoniker": "D:0:0:{EED494C8-94E4-47AD-8192-482F94E9231F}|Autoclicker.csproj|c:\\users\\it-user\\git-ea\\autoclicker\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
       "RelativeMoniker": "D:0:0:{EED494C8-94E4-47AD-8192-482F94E9231F}|Autoclicker.csproj|solutionrelative:form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{EED494C8-94E4-47AD-8192-482F94E9231F}|Autoclicker.csproj|c:\\users\\it-user\\git-ea\\autoclicker\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{EED494C8-94E4-47AD-8192-482F94E9231F}|Autoclicker.csproj|C:\\Users\\IT-User\\git-ea\\Autoclicker\\form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{EED494C8-94E4-47AD-8192-482F94E9231F}|Autoclicker.csproj|solutionrelative:form1.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
@@ -52,7 +52,7 @@
               "RelativeDocumentMoniker": "Form1.cs",
               "ToolTip": "C:\\Users\\IT-User\\git-ea\\Autoclicker\\Form1.cs",
               "RelativeToolTip": "Form1.cs",
-              "ViewState": "AQIAAOEAAAAAAAAAAAAWwO0AAAAQAAAA",
+              "ViewState": "AQIAADgAAAAAAAAAAAAnwEMAAAARAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-04-08T10:48:42.492Z",
               "EditorCaption": ""
@@ -67,8 +67,7 @@
               "RelativeToolTip": "HotKeyObject.cs",
               "ViewState": "AQIAAE4AAAAAAAAAAAD4v18AAAAPAAAA",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-03-21T14:47:23.309Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-03-21T14:47:23.309Z"
             },
             {
               "$type": "Document",
