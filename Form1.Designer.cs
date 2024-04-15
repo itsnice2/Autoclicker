@@ -42,11 +42,13 @@
             boxKlickTest = new GroupBox();
             label4 = new Label();
             timer1 = new System.Windows.Forms.Timer(components);
-            chkbox_once = new CheckBox();
             timer2 = new System.Windows.Forms.Timer(components);
             toolTip_onlyonce = new ToolTip(components);
             label_help = new Label();
             btnExpand = new Button();
+            list_kps = new ComboBox();
+            label5 = new Label();
+            timer_kps = new System.Windows.Forms.Timer(components);
             boxKlickTest.SuspendLayout();
             SuspendLayout();
             // 
@@ -128,13 +130,6 @@
             // 
             timer1.Tick += timer1_Tick;
             // 
-            // chkbox_once
-            // 
-            resources.ApplyResources(chkbox_once, "chkbox_once");
-            chkbox_once.Name = "chkbox_once";
-            toolTip_onlyonce.SetToolTip(chkbox_once, resources.GetString("chkbox_once.ToolTip"));
-            chkbox_once.CheckedChanged += chkbox_once_CheckedChanged;
-            // 
             // timer2
             // 
             timer2.Tick += timer2_Tick;
@@ -145,6 +140,7 @@
             label_help.BackColor = SystemColors.ControlLight;
             label_help.Name = "label_help";
             toolTip_onlyonce.SetToolTip(label_help, resources.GetString("label_help.ToolTip"));
+            label_help.Click += label_help_Click;
             // 
             // btnExpand
             // 
@@ -154,13 +150,34 @@
             btnExpand.UseVisualStyleBackColor = true;
             btnExpand.Click += btnExpand_Click;
             // 
+            // list_kps
+            // 
+            resources.ApplyResources(list_kps, "list_kps");
+            list_kps.DropDownStyle = ComboBoxStyle.DropDownList;
+            list_kps.DropDownWidth = 160;
+            list_kps.FormattingEnabled = true;
+            list_kps.Name = "list_kps";
+            toolTip_onlyonce.SetToolTip(list_kps, resources.GetString("list_kps.ToolTip"));
+            list_kps.SelectedIndexChanged += list_kps_SelectedIndexChanged;
+            // 
+            // label5
+            // 
+            resources.ApplyResources(label5, "label5");
+            label5.Name = "label5";
+            toolTip_onlyonce.SetToolTip(label5, resources.GetString("label5.ToolTip"));
+            // 
+            // timer_kps
+            // 
+            timer_kps.Tick += timer_kps_Tick;
+            // 
             // Form1
             // 
             resources.ApplyResources(this, "$this");
             AutoScaleMode = AutoScaleMode.Font;
+            Controls.Add(label5);
+            Controls.Add(list_kps);
             Controls.Add(btnExpand);
             Controls.Add(label_help);
-            Controls.Add(chkbox_once);
             Controls.Add(boxKlickTest);
             Controls.Add(label3);
             Controls.Add(txtKoordinaten);
@@ -205,10 +222,12 @@
         private GroupBox boxKlickTest;
         private Label label4;
         private System.Windows.Forms.Timer timer1;
-        private CheckBox chkbox_once;
         private System.Windows.Forms.Timer timer2;
         private ToolTip toolTip_onlyonce;
         private Label label_help;
         private Button btnExpand;
+        private ComboBox list_kps;
+        private Label label5;
+        private System.Windows.Forms.Timer timer_kps;
     }
 }

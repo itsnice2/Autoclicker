@@ -18,3 +18,4 @@ C:\Users\IT-User\git-ea\Autoclicker\obj\Debug\net8.0-windows7.0\refint\Autoclick
 C:\Users\IT-User\git-ea\Autoclicker\obj\Debug\net8.0-windows7.0\Autoclicker.pdb
 C:\Users\IT-User\git-ea\Autoclicker\obj\Debug\net8.0-windows7.0\Autoclicker.genruntimeconfig.cache
 C:\Users\IT-User\git-ea\Autoclicker\obj\Debug\net8.0-windows7.0\ref\Autoclicker.dll
+C:\Users\IT-User\git-ea\Autoclicker\obj\Debug\net8.0-windows7.0\Autoclicker.AboutAutoclicker.resources

@@ -1,20 +1,22 @@
-using System;
+ï»¿using System;
 using System.Runtime.InteropServices;
 using System.Security.Cryptography.Xml;
+using System.Text;
+
 
 namespace Autoclicker
 {
     public partial class Form1 : Form
     {
-
         public int klicktest = 0;
+        int zaehler;
         public bool abbruch = false;
         public Point myPoint = new Point();
         public KeyInfo taste = new KeyInfo();
 
         private HotKey StopThisNow = new HotKey();
 
-        // Nächste 4 Zeilen für Mausklicks:
+        // NÃ¤chste 4 Zeilen fÃ¼r Mausklicks:
         private const UInt32 MouseEventLeftDown = 0x0002;
         private const UInt32 MouseEventLeftUp = 0x0004;
 
@@ -35,7 +37,7 @@ namespace Autoclicker
         private void btnStart_Click(object sender, EventArgs e)
         {
 
-            // Steht überhaupt etwas in den Koordinatenboxen?
+            // Steht Ã¼berhaupt etwas in den Koordinatenboxen?
             if (txtXAchse.Text == "" || txtXAchse.Text == "")
             {
                 string myOldText = label3.Text;
@@ -48,12 +50,13 @@ namespace Autoclicker
             // Wenn ja, dann hier weitermachen
             else
             {
-
-                int zaehler = 0;
+                int klickintervall = 0;
+                int auswahl = list_kps.SelectedIndex;
                 Point myPoint = new Point();
                 myPoint.X = Int32.Parse(txtXAchse.Text);
                 myPoint.Y = Int32.Parse(txtYAchse.Text);
 
+                //schauen ob das "Anzahl der Klicks"-Feld gefÃ¼llt ist
                 if (txtKPS.Text == "")
                 {
                     zaehler = 1;
@@ -63,52 +66,82 @@ namespace Autoclicker
                     zaehler = Int32.Parse(txtKPS.Text);
                 }
 
-                // Nur einmal ausführen?
-                if (chkbox_once.Checked == true)
+                // Klicks pro Sekunde auslesen
+                if (auswahl == 1)
                 {
-                    Cursor.Position = myPoint;
+                    klickintervall = 10;
+                }
+                else if (auswahl == 2)
+                {
+                    klickintervall = 100;
+                }
+                else if (auswahl == 3)
+                {
+                    klickintervall = 1000;
+                }
+                else if (auswahl == 4)
+                {
+                    klickintervall = 2000;
+                }
+                else if (auswahl == 5)
+                {
+                    klickintervall = 5000;
+                }
+                else if (auswahl == 6)
+                {
+                    klickintervall = 10000;
+                }
+                else if (auswahl == 7)
+                {
+                    klickintervall = 60000;
+                }
+                else if (auswahl == 8)
+                {
+                    klickintervall = 300000;
+                }
+
+                Cursor.Position = myPoint;
+                //timer_kps.Interval = klickintervall;
+                //timer_kps.Start();
+
+                while (zaehler > 0)
+                {
+
+                    if (zaehler == 0) break;
+
+                    if (auswahl > 3)
+                    {
+                        Cursor.Position = myPoint;
+                    }
+
+                    mouse_event(MouseEventLeftDown, uint.Parse(txtXAchse.Text), uint.Parse(txtYAchse.Text), 0, new System.IntPtr());
+                    mouse_event(MouseEventLeftUp, uint.Parse(txtXAchse.Text), uint.Parse(txtYAchse.Text), 0, new System.IntPtr());
+
+                    Thread.Sleep(klickintervall);
+                    zaehler -= 1;
+                }
+
+                //timer_kps.Stop();
+
+                /* Alte Schleife aus v0.2
+                for (int i = 0; i < zaehler; i++)
+                {                    
+                    mouse_event(MouseEventLeftDown, uint.Parse(txtXAchse.Text), uint.Parse(txtYAchse.Text), 0, new System.IntPtr());
+                    mouse_event(MouseEventLeftUp, uint.Parse(txtXAchse.Text), uint.Parse(txtYAchse.Text), 0, new System.IntPtr());
                     
-                    for (int i = 0; i < zaehler; i++)
+                    if (klickintervall > 3)
                     {
-                        mouse_event(MouseEventLeftDown, uint.Parse(txtXAchse.Text), uint.Parse(txtYAchse.Text), 0, new System.IntPtr());
-                        mouse_event(MouseEventLeftUp, uint.Parse(txtXAchse.Text), uint.Parse(txtYAchse.Text), 0, new System.IntPtr());
-                        //Thread.Sleep(100);
+                        Cursor.Position = myPoint;
                     }
-                    //txtKPS.Text = zaehler.ToString();
-                    //txtKPS.Text = "Fertig";
-                    this.BringToFront();
-                    this.Activate();
-                    txtKPS.Focus();
-                }
-                // unendlich ausführen 
-                else
-                {
-                    //KeyEventHandler meinEvent = new KeyEventHandler();
-
-                    Cursor.Position = myPoint;
-
-                    do
-                    {
-
-                        mouse_event(MouseEventLeftDown, uint.Parse(txtXAchse.Text), uint.Parse(txtYAchse.Text), 0, new System.IntPtr());
-                        mouse_event(MouseEventLeftUp, uint.Parse(txtXAchse.Text), uint.Parse(txtYAchse.Text), 0, new System.IntPtr());
-                        Thread.Sleep(100);
-                        //btnStart.Focus();
-                        txtKPS.Focus();
-
-                        zaehler += 1;
-
-                        if (abbruch == true || zaehler == 100)
-                        {
-                            break;
-                        }
-                    }
-                    while (abbruch == false);
 
                 }
+                */
 
-
-
+                // Am Ende den Fokus wieder auf das Autoclicker-Fenster setzen
+                this.BringToFront();
+                this.Activate();
+                //txtKPS.Focus();
+                btnStart.Focus();
 
             }
         }
@@ -145,19 +178,6 @@ namespace Autoclicker
                 txtXAchse.Text = myPoint.X.ToString();
                 txtYAchse.Text = myPoint.Y.ToString();
                 label3.ForeColor = Color.Black;
-            }
-
-            // "nur 1x" Checkbox
-            if (e.Modifiers == Keys.Control && e.KeyCode == Keys.D1)
-            {
-                if (chkbox_once.Checked == false)
-                {
-                    chkbox_once.Checked = true;
-                }
-                else
-                {
-                    chkbox_once.Checked = false;
-                }
             }
 
             StopThisNow.OwnerForm = this;
@@ -205,48 +225,69 @@ namespace Autoclicker
 
         private void Form1_Load(object sender, EventArgs e)
         {
-            chkbox_once.Checked = true;
-            chkbox_once.Enabled = false;
+
             txtKPS.Text = "100";
 
-            toolTip_onlyonce.SetToolTip(this.chkbox_once, "Diese Klicks nur einmal auführen, oder wiederholen?");
+            // SelectedIndex = { 0 | 8 }
+            list_kps.Items.Add("Ja.");
+            list_kps.Items.Add("100");
+            list_kps.Items.Add("10");
+            list_kps.Items.Add("1");
+            list_kps.Items.Add("1 Klick alle 2 Sekunden");
+            list_kps.Items.Add("1 Klick alle 5 Sekunden");
+            list_kps.Items.Add("1 Klick alle 10 Sekunden");
+            list_kps.Items.Add("1 Klick pro Minute");
+            list_kps.Items.Add("1 Klick alle 5 Minute");
+            list_kps.SelectedIndex = 0;
+
             toolTip_onlyonce.SetToolTip(this.label_help,
                 "STRG + S = Mauskoordinaten speichern\n" +
-                "(ALT +) S\t = Klicks ausführen\n" +
+                "(ALT +) S\t = Klicks ausfÃ¼hren\n" +
                 "STRG + SHIFT + X = Klicks abbrechen\n" +
                 "STRG + 1 = Checkbox \"nur 1x\" setzen\n" +
                 "(ALT +) B = Programm beenden\n");
         }
 
-        private void chkbox_once_CheckedChanged(object sender, EventArgs e)
-        {
-            if (chkbox_once.Checked == true)
-            {
-                txtKPS.Enabled = true;
-            }
-            else
-            {
-                txtKPS.Enabled = false;
-            }
-        }
 
         private void btnExpand_Click(object sender, EventArgs e)
         {
             if (btnExpand.Text == "-")
             {
                 this.Size = new Size(213, 205);
-                //this.Size = new Size(300, 300);
                 btnExpand.Text = "+";
             }
             else
             {
                 this.Size = new Size(213, 294);
-                //this.Size = new Size(300, 500);
                 btnExpand.Text = "-";
             }
         }
 
-        //klicktest += 1;
-        //txtKlickTest.Text = klicktest.ToString();
+        private void list_kps_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            // gibt den Text der Auswahl aus
+            //label2.Text = list_kps.SelectedItem.ToString();
+
+            // gibt den Indexwert der Auswahl aus, beginnend mit 0
+            //label2.Text = list_kps.SelectedIndex.ToString(); 
+        }
+
+        private void timer_kps_Tick(object sender, EventArgs e)
+        {
+            mouse_event(MouseEventLeftDown, uint.Parse(txtXAchse.Text), uint.Parse(txtYAchse.Text), 0, new System.IntPtr());
+            mouse_event(MouseEventLeftUp, uint.Parse(txtXAchse.Text), uint.Parse(txtYAchse.Text), 0, new System.IntPtr());
+            zaehler -= 1;
+        }
+
+        private void label_help_Click(object sender, EventArgs e)
+        {
+            //AboutBox1.
+
+            AboutAutoclicker myForm = new AboutAutoclicker();
+            this.Hide();
+            myForm.ShowDialog();
+            this.Close();
+
+        }
     }
 }
