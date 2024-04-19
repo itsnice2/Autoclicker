@@ -6,10 +6,3 @@ Version 0.2.1
 ---------------------------------
 - Klicks sind nicht mehr auf 10 pro Sekunde limitiert
 
-Version 0.2
----------------------------------
-- 
-
-Version 0.1
----------------------------------
-- 

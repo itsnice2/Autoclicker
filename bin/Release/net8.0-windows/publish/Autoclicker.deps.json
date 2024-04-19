@@ -9,6 +9,11 @@
       "Autoclicker/1.0.0": {
         "runtime": {
           "Autoclicker.dll": {}
+        },
+        "resources": {
+          "de-DE/Autoclicker.resources.dll": {
+            "locale": "de-DE"
+          }
         }
       }
     }

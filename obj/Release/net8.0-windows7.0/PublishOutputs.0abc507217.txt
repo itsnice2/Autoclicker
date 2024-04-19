@@ -1,0 +1,6 @@
+C:\Users\IT-User\git-ea\Autoclicker\bin\Release\net8.0-windows\publish\Autoclicker.exe
+C:\Users\IT-User\git-ea\Autoclicker\bin\Release\net8.0-windows\publish\Autoclicker.dll
+C:\Users\IT-User\git-ea\Autoclicker\bin\Release\net8.0-windows\publish\Autoclicker.deps.json
+C:\Users\IT-User\git-ea\Autoclicker\bin\Release\net8.0-windows\publish\Autoclicker.runtimeconfig.json
+C:\Users\IT-User\git-ea\Autoclicker\bin\Release\net8.0-windows\publish\Autoclicker.pdb
+C:\Users\IT-User\git-ea\Autoclicker\bin\Release\net8.0-windows\publish\de-DE\Autoclicker.resources.dll

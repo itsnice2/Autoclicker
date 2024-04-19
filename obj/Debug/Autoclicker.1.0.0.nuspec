@@ -1,0 +1,28 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2012/06/nuspec.xsd">
+  <metadata>
+    <id>Autoclicker</id>
+    <version>1.0.0</version>
+    <authors>Autoclicker</authors>
+    <description>Package Description</description>
+    <repository type="git" commit="f93b639b13e6a784ebe1f61306d37c293c2a66d0" />
+    <dependencies>
+      <group targetFramework="net8.0-windows7.0" />
+    </dependencies>
+    <frameworkReferences>
+      <group targetFramework="net8.0-windows7.0">
+        <frameworkReference name="Microsoft.WindowsDesktop.App" />
+      </group>
+    </frameworkReferences>
+    <contentFiles>
+      <files include="any/net8.0-windows7.0/autocklicker2.ico" buildAction="Content" />
+    </contentFiles>
+  </metadata>
+  <files>
+    <file src="C:\Users\IT-User\git-ea\Autoclicker\obj\Debug\net8.0-windows7.0\de-DE\Autoclicker.resources.dll" target="lib\net8.0-windows7.0\de-DE\Autoclicker.resources.dll" />
+    <file src="C:\Users\IT-User\git-ea\Autoclicker\bin\Debug\net8.0-windows7.0\Autoclicker.runtimeconfig.json" target="lib\net8.0-windows7.0\Autoclicker.runtimeconfig.json" />
+    <file src="C:\Users\IT-User\git-ea\Autoclicker\bin\Debug\net8.0-windows7.0\Autoclicker.dll" target="lib\net8.0-windows7.0\Autoclicker.dll" />
+    <file src="C:\Users\IT-User\git-ea\Autoclicker\autocklicker2.ico" target="content\autocklicker2.ico" />
+    <file src="C:\Users\IT-User\git-ea\Autoclicker\autocklicker2.ico" target="contentFiles\any\net8.0-windows7.0\autocklicker2.ico" />
+  </files>
+</package>
